@@ -12,13 +12,31 @@
 <body>
     <!-- Include the library in the page -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- Add the marked library -->
+    <script src="https://unpkg.com/marked"></script>
 
     <!-- Notebook app -->
     <div id="notebook">
+        <!-- Sidebar -->
+        <aside class="side-bar">
+            <!-- Here will be the note list -->
+            <div class="toolbar">
+                <!-- Add note button -->
+                <!-- <button v-on:click='addNote'> <i class="material-icons">add</i> Add note </button> -->
+                <!-- shortcut use @ for v-on -->
+                <!-- shortcut use : for v-bind -->
+                <button v-bind:title="addButtonTitle" @click='addNote'> <i class="material-icons">add</i> Add note </button>
+            </div>
+        </aside>
+    
         <!-- Main pane -->
         <section class="main">
-
+            <textarea v-model="content"></textarea>
         </section>
+        <!-- Preview panel -->
+        <aside class="preview" v-html="notePreview">
+            {{ nodePreview }}
+        </aside>
     </div>
 
     <!-- Some JavaScript -->
